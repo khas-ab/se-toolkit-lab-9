@@ -30,8 +30,8 @@ A full-stack recipe planning application with **two interfaces**: a traditional 
 
 ### Background Jobs (APScheduler)
 
-- **Daily dinner reminder** (8 AM) — Telegram message with today's dinner recipe
-- **Weekly shopping list** (Sunday 9 AM) — Auto-generated and sent via Telegram
+- **Daily dinner reminder** (8 AM) — Telegram message with today's dinner recipe.
+- **Weekly shopping list** (Sunday 9 AM) — Auto-generated and sent via Telegram.
 
 ---
 

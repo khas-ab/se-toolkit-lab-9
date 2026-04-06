@@ -1,0 +1,137 @@
+[tool.uv.workspace]
+members = ["backend", "mcp", "qwen-code-api"]
+
+[tool.uv.sources]
+lms-mcp = { workspace = true }
+
+[dependency-groups]
+dev = [
+  "poethepoet>=0.40.0",
+  "pyright==1.1.408",
+  "pytest==9.0.2",
+  "pytest-asyncio>=0.25.0",
+  "ruff==0.14.14",
+  "ty==0.0.13",
+]
+
+[tool.ruff]
+exclude = ["qwen-code-api"]
+
+[tool.ruff.lint]
+select = ["RET503"]
+
+[tool.poe.tasks]
+# Run server
+
+## Check code and run server in dev mode
+
+[tool.poe.tasks.dev]
+help = "Run server after static analysis"
+sequence = ["check", "dev-unsafe"]
+
+## Run server
+[tool.poe.tasks.dev-unsafe]
+help = "Run server without static analysis"
+cmd = "python backend/app/run.py"
+
+# Run static analysis
+
+## Run all tools
+
+[tool.poe.tasks.check]
+help = "Format, lint, typecheck"
+sequence = ["format", "lint", "typecheck"]
+
+## Typecheck
+
+[tool.poe.tasks.typecheck]
+help = "Run all typecheckers"
+sequence = ["ty-check", "pyright-check"]
+
+[tool.poe.tasks.ty-check]
+help = "Run the 'ty' typechecker"
+cmd = "ty check"
+
+[tool.poe.tasks.pyright-check]
+help = "Run the 'pyright' typechecker"
+cmd = "pyright"
+
+## Lint
+
+[tool.poe.tasks.lint]
+help = "Run the 'ruff' linter"
+cmd = "ruff check"
+
+## Format
+
+[tool.poe.tasks.format]
+help = "Run the 'ruff' formatter"
+cmd = "ruff format"
+
+# Run dynamic analysis
+
+## Run tests
+
+[tool.poe.tasks.test]
+help = "Run all tests"
+sequence = ["test-unit", "test-e2e"]
+
+[tool.poe.tasks.test-unit]
+help = "Run unit tests"
+cmd = "pytest backend/tests/unit"
+envfile = "backend/.env.tests.unit.secret"
+
+[tool.poe.tasks.test-e2e]
+help = "Run end-to-end tests against the deployed API"
+cmd = "pytest backend/tests/e2e"
+envfile = "backend/.env.tests.e2e.secret"
+
+# Export OpenAPI schema
+
+[tool.poe.tasks.export-openapi]
+help = "Export OpenAPI schema to openapi.json"
+cmd = "python scripts/export-openapi.py"
+env = { PYTHONPATH = "backend" }
+
+[tool.poe.tasks.check-openapi]
+help = "Check that openapi.json is up to date"
+cmd = "python scripts/export-openapi.py --check"
+env = { PYTHONPATH = "backend" }
+
+# Query Qwen Code API
+
+[tool.poe.tasks.query-qwen-code-api]
+help = "Query the Qwen Code API: poe query-qwen-code-api [OPTIONS] <prompt>"
+cmd = "python scripts/query-qwen-code-api.py"
+
+[tool.pyright]
+include = [
+  "backend",
+  "scripts",
+  "mcp",
+  "qwen-code-api",
+]
+extraPaths = ["backend", "qwen-code-api"]
+exclude = [
+  "**/__pycache__",
+  "**/node_modules",
+  "**/.*",
+  ".venv",
+  ".direnv",
+]
+typeCheckingMode = "strict"
+reportAssignmentType = "none"
+reportIncompatibleVariableOverride = "none"
+reportUnknownMemberType = "none"
+
+[tool.pytest.ini_options]
+testpaths = ["backend/tests"]
+pythonpath = ["backend"]
+asyncio_mode = "auto"
+
+[tool.ty.src]
+include = ["backend", "mcp", "qwen-code-api"]
+
+# TODO: remove after upgrading to ty>=0.0.26 (fixes ParamSpec, see https://github.com/astral-sh/ty/issues/1635)
+[tool.ty.rules]
+invalid-argument-type = "warn"

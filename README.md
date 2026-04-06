@@ -1,4 +1,5 @@
 ### Implementation plan
+Diet plan app
 #### Version 1:
 Pure Web Application (FastAPI + React/Vue/HTML)  
 This is the classic approach. All the functionality of the Diet Recipe Planner is moved to the browser.  

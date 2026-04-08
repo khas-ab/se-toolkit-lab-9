@@ -50,7 +50,9 @@ We refer to your fork as `fork` and to the original repo as `upstream`.
 
 #### 1.1.6. Sync your fork with upstream
 
-1. [Sync your fork](../../wiki/github.md#sync-a-fork) so you have the latest changes from the course repository.
+1. Sync your fork with the upstream repository.
+
+   On GitHub, go to your fork's main page. If there's a **"Sync fork"** button, click it to pull in the latest changes from the original repository. If you don't see it, your fork is already up to date.
 
    Do this **before cloning** to the VM, and again whenever the instructors push updates.
 
@@ -417,4 +419,4 @@ In this lab, you will use the coding agent (Qwen Code) to help implement tasks. 
 
 ----
 
-You're all set. Now go to the [tasks](../../README.md#tasks).
+You're all set. Now go to the [tasks](../../lab/tasks/).

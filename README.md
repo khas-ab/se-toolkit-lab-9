@@ -97,7 +97,7 @@ docker compose exec backend python seed_recipes.py
 
 Open **http://localhost:5173** in your browser.
 
-### Telegram Bot
+### Telegram Bot (does not really work)
 
 1. Get a bot token from **@BotFather** on Telegram
 2. Get your chat ID from **@userinfobot**

@@ -1,3 +1,8 @@
+---
+name: observability-assistant
+description: Search logs and traces in VictoriaLogs/VictoriaTraces to diagnose system errors. Use when the user asks about errors, failures, or system health.
+---
+
 # Observability Assistant Skill
 
 You have access to observability tools that query VictoriaLogs and VictoriaTraces. Use these to help diagnose system issues.

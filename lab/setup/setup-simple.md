@@ -128,7 +128,7 @@ We refer to your fork as `fork` and to the original repo as `upstream`.
    >
    > **Verify** — after either option, run: `git push origin main`. It should succeed with no password prompt.
 
-1. Go into the repository and install `Python` dependencies:
+3. Go into the repository and install `Python` dependencies:
 
    ```terminal
    cd se-toolkit-lab-8
@@ -137,13 +137,13 @@ We refer to your fork as `fork` and to the original repo as `upstream`.
 
    You will add `nanobot-ai` later in Task 1 inside a repo-local `nanobot/` project.
 
-2. Create the environment file:
+4. Create the environment file:
 
    ```terminal
    cp .env.docker.example .env.docker.secret
    ```
 
-3. Configure the autochecker API credentials.
+5. Configure the autochecker API credentials.
 
    The ETL pipeline fetches data from the autochecker dashboard API.
    Open `.env.docker.secret` and set:
@@ -161,13 +161,13 @@ We refer to your fork as `fork` and to the original repo as `upstream`.
    > If you haven't registered in the autochecker bot yet, do it now at <https://t.me/auchebot>.
    > If you need to change existing data, ask your TA or try `/reset` in the bot.
 
-4. Set `LMS_API_KEY` — this is the **backend API key** that protects your LMS endpoints (used for `Authorization: Bearer` in Swagger and the React dashboard). It is **not** the Nanobot login password and it is **not** the LLM key.
+6. Set `LMS_API_KEY` — this is the **backend API key** that protects your LMS endpoints (used for `Authorization: Bearer` in Swagger and the React dashboard). It is **not** the Nanobot login password and it is **not** the LLM key.
 
    ```text
    LMS_API_KEY=set-it-to-something-and-remember-it
    ```
 
-5. Set `QWEN_CODE_API_KEY` — the Qwen Code API is included as a Docker Compose service. You just need to set your API key:
+7. Set `QWEN_CODE_API_KEY` — the Qwen Code API is included as a Docker Compose service. You just need to set your API key:
 
    ```text
    QWEN_CODE_API_KEY=your-qwen-api-key
@@ -175,7 +175,7 @@ We refer to your fork as `fork` and to the original repo as `upstream`.
 
    If you don't have a Qwen API key yet, see [step 1.9](#19-set-up-llm-access-qwen-code-api).
 
-6. Set `NANOBOT_ACCESS_KEY` — this is the password that will protect the Nanobot web client in Task 2. There is **no default**. Choose your own value and remember it.
+8. Set `NANOBOT_ACCESS_KEY` — this is the password that will protect the Nanobot web client in Task 2. There is **no default**. Choose your own value and remember it.
 
    ```text
    NANOBOT_ACCESS_KEY=set-your-own-private-password

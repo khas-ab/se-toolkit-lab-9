@@ -1,5 +1,5 @@
 ---
-name: observability-assistant
+name: observability
 description: Search logs and traces in VictoriaLogs/VictoriaTraces to diagnose system errors. Use when the user asks about errors, failures, or system health.
 ---
 
@@ -9,12 +9,12 @@ You have access to observability tools that query VictoriaLogs and VictoriaTrace
 
 ## Available Tools
 
-| Tool                 | When to Use                                           | Parameters                                                         |
-| :------------------- | :---------------------------------------------------- | :----------------------------------------------------------------- |
+| Tool                 | When to Use                                | Parameters                                                         |
+| :------------------- | :----------------------------------------- | :----------------------------------------------------------------- |
 | `logs_search`        | Search for specific log entries by keyword or LogsQL query | `query` (LogsQL string), `limit` (default 10)                  |
-| `logs_error_count`   | Get aggregated error counts per service               | `service` (optional), `minutes` (time window, default 60)          |
-| `traces_list`        | List recent traces for a service                      | `service` (default: "Learning Management Service"), `limit` (default 5) |
-| `traces_get`         | Fetch full details of a specific trace                | `trace_id` (required)                                              |
+| `logs_error_count`   | Get aggregated error counts per service    | `service` (optional), `minutes` (time window, default 60)          |
+| `traces_list`        | List recent traces for a service           | `service` (default: "Learning Management Service"), `limit` (default 5) |
+| `traces_get`         | Fetch full details of a specific trace     | `trace_id` (required)                                              |
 
 ## How to Diagnose Issues
 

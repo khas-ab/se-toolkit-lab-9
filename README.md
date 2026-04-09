@@ -96,6 +96,7 @@ docker compose exec backend python seed_recipes.py
 ```
 
 Open **[http://localhost:5173](http://localhost:5173)** in your browser.
+Open **[http://10.93.25.127:5173](http://10.93.25.127:5173)** in your browser.
 
 ### Telegram Bot (does not really work)
 
